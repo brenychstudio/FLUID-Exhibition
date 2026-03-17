@@ -1,0 +1,62 @@
+﻿---
+import { ClientRouter } from "astro:transitions";
+import "../styles/global.css";
+import LanguageSwitch from "../components/site/LanguageSwitch.astro";
+import FluidAmbientCanvas from "../components/preview/FluidAmbientCanvas.tsx";
+import type { Locale } from "../lib/i18n";
+
+interface Props {
+  title?: string;
+  locale: Locale;
+  pathNoLocale: string;
+  hideHeader?: boolean;
+  hideAmbient?: boolean;
+}
+
+const {
+  title = "QR Fluid",
+  locale,
+  pathNoLocale,
+  hideHeader = false,
+  hideAmbient = false,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <ClientRouter />
+  </head>
+
+  <body>
+    {!hideAmbient && <FluidAmbientCanvas client:load />}
+
+    <div class="site-shell">
+      <div class="content-layer">
+        {!hideHeader && (
+          <header class="sticky top-0 z-40 px-3 pt-3 md:px-5 md:pt-4">
+            <div class="container-premium">
+              <div class="fluid-topbar px-4 py-3 md:px-5">
+                <a
+                  href={`/${locale}/exhibition`}
+                  class="text-xs font-semibold tracking-[0.34em] uppercase text-white/90"
+                >
+                  QR FLUID
+                </a>
+
+                <LanguageSwitch locale={locale} pathNoLocale={pathNoLocale} />
+              </div>
+            </div>
+          </header>
+        )}
+
+        <main class={hideHeader ? "" : "pb-16 md:pb-24"}>
+          <slot />
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

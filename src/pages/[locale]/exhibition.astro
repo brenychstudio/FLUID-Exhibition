@@ -1,0 +1,172 @@
+﻿---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import QRExhibitionPreviewStage from "../../components/preview/QRExhibitionPreviewStage.astro";
+import ArtistIdentityCard from "../../components/site/ArtistIdentityCard.astro";
+import { exhibition } from "../../data/exhibition";
+import { artists } from "../../data/artists";
+import { LOCALES, type Locale } from "../../lib/i18n";
+
+export function getStaticPaths() {
+  return LOCALES.map((locale) => ({
+    params: { locale },
+  }));
+}
+
+const locale = Astro.params.locale as Locale;
+const orderedArtists = [...artists].sort((a, b) => a.order - b.order);
+
+const ui = {
+  ca: {
+    stageTitle: "FLUID",
+    stageSubtitle: "Exposició col·laborativa / reflex nocturn / memòria líquida viva",
+    dateLabel: "26 MARÇ — 17 ABRIL 2026",
+    venueLabel: "BARCELONA / SANTLLUC CERCLE ARTÍSTIC",
+    curatorLabel: "EXPOSICIÓ COL·LABORATIVA",
+    about: "Sobre l'exposició",
+    artists: "Artistes participants",
+    total: "total",
+    discover: "Obrir perfil",
+    venue: "Espai",
+    address: "Adreça",
+    dates: "Dates",
+    hours: "Horari",
+    organizer: "Organització",
+    curator: "Comissariat",
+    heroMeta: "Finestra líquida",
+    heroSubtitle: "Substància líquida morfant / reflex nocturn / memòria viva",
+    heroCta: "Entrar a l'exposició",
+    maps: "Obrir a Maps",
+    featured: "Artista principal",
+    participant: "Participant",
+    duo: "Duo",
+  },
+  es: {
+    stageTitle: "FLUID",
+    stageSubtitle: "Exposición colaborativa / reflejo nocturno / memoria líquida viva",
+    dateLabel: "26 MARZO — 17 ABRIL 2026",
+    venueLabel: "BARCELONA / SANTLLUC CERCLE ARTÍSTIC",
+    curatorLabel: "EXPOSICIÓN COLABORATIVA",
+    about: "Sobre la exposición",
+    artists: "Artistas participantes",
+    total: "total",
+    discover: "Abrir perfil",
+    venue: "Espacio",
+    address: "Dirección",
+    dates: "Fechas",
+    hours: "Horario",
+    organizer: "Organización",
+    curator: "Comisariado",
+    heroMeta: "Ventana líquida",
+    heroSubtitle: "Sustancia líquida en morphing / reflejo nocturno / memoria viva",
+    heroCta: "Entrar en la exposición",
+    maps: "Abrir en Maps",
+    featured: "Artista principal",
+    participant: "Participante",
+    duo: "Dúo",
+  },
+  en: {
+    stageTitle: "FLUID",
+    stageSubtitle: "Collaborative exhibition / nocturnal reflection / living liquid memory",
+    dateLabel: "26 MARCH — 17 APRIL 2026",
+    venueLabel: "BARCELONA / SANTLLUC CERCLE ARTÍSTIC",
+    curatorLabel: "COLLABORATIVE EXHIBITION",
+    about: "About the exhibition",
+    artists: "Participating artists",
+    total: "total",
+    discover: "Open profile",
+    venue: "Venue",
+    address: "Address",
+    dates: "Dates",
+    hours: "Hours",
+    organizer: "Organizer",
+    curator: "Curator",
+    heroMeta: "Liquid Hero Window",
+    heroSubtitle: "Liquid morphing substance / nocturnal reflection / living memory",
+    heroCta: "Enter Exhibition",
+    maps: "Open in Maps",
+    featured: "Featured artist",
+    participant: "Participant",
+    duo: "Duo",
+  },
+} as const;
+
+const t = ui[locale];
+
+const localeLinks = LOCALES.map((item) => ({
+  label: item.toUpperCase(),
+  href: `/${item}/exhibition`,
+  active: item === locale,
+}));
+
+const infoItems = [
+  { label: t.venue, value: exhibition.venue },
+  { label: t.address, value: exhibition.address ?? "" },
+  { label: t.dates, value: exhibition.dates },
+  { label: t.hours, value: exhibition.hours ?? "" },
+  { label: t.organizer, value: exhibition.organizer ?? "" },
+  { label: t.curator, value: exhibition.curator ?? "" },
+];
+---
+
+<BaseLayout
+  title={`${exhibition.title[locale]} — QR Fluid`}
+  locale={locale}
+  pathNoLocale="/exhibition"
+  hideHeader={true}
+  hideAmbient={true}
+>
+  <QRExhibitionPreviewStage
+    title={t.stageTitle}
+    subtitle={t.stageSubtitle}
+    dateLabel={t.dateLabel}
+    venueLabel={t.venueLabel}
+    curatorLabel={t.curatorLabel}
+    localeLinks={localeLinks}
+    infoItems={infoItems}
+    heroTitle={exhibition.title[locale]}
+    heroSubtitle={t.heroSubtitle}
+    heroMetaLabel={t.heroMeta}
+    heroCtaLabel={t.heroCta}
+    mapsHref={exhibition.mapsUrl ?? ""}
+    mapsLabel={t.maps}
+  />
+
+  <section class="container-premium pt-10 md:pt-14">
+    <div class="fluid-panel rounded-[2rem] p-6 md:p-8">
+      <p class="section-kicker">{t.about}</p>
+      <div class="fluid-divider mt-5 mb-6"></div>
+      <p class="max-w-3xl text-base leading-8 text-white/74 md:text-lg md:leading-9">
+        {exhibition.description[locale]}
+      </p>
+    </div>
+  </section>
+
+  <section id="artists" class="container-premium pt-12 md:pt-16 pb-16 md:pb-24">
+    <div class="mb-7 flex items-end justify-between gap-6">
+      <div>
+        <p class="section-kicker">{t.artists}</p>
+        <h2 class="mt-3 text-3xl font-semibold tracking-[-0.035em] text-white md:text-5xl">
+          {t.artists}
+        </h2>
+      </div>
+
+      <p class="fluid-pill">
+        {orderedArtists.length} {t.total}
+      </p>
+    </div>
+
+    <div class="grid gap-5 md:grid-cols-2">
+      {orderedArtists.map((artist) => (
+        <ArtistIdentityCard
+          artist={artist}
+          locale={locale}
+          href={`/${locale}/artists/${artist.slug}`}
+          openLabel={t.discover}
+          featuredLabel={t.featured}
+          participantLabel={t.participant}
+          duoLabel={t.duo}
+        />
+      ))}
+    </div>
+  </section>
+</BaseLayout>

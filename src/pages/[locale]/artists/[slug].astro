@@ -1,0 +1,359 @@
+﻿---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import ArtistMiniHeroStage from "../../../components/hero/ArtistMiniHeroStage.tsx";
+import { artists } from "../../../data/artists";
+import { exhibition } from "../../../data/exhibition";
+import type { ArtistData } from "../../../lib/content";
+import { LOCALES, type Locale } from "../../../lib/i18n";
+
+export function getStaticPaths() {
+  return LOCALES.flatMap((locale) =>
+    artists.map((artist) => ({
+      params: {
+        locale,
+        slug: artist.slug,
+      },
+      props: {
+        artist,
+      },
+    })),
+  );
+}
+
+const locale = Astro.params.locale as Locale;
+const { artist } = Astro.props as { artist: ArtistData };
+
+const orderedArtists = [...artists].sort((a, b) => a.order - b.order);
+const currentIndex = orderedArtists.findIndex((item) => item.slug === artist.slug);
+const previousArtist = currentIndex > 0 ? orderedArtists[currentIndex - 1] : undefined;
+const nextArtist = currentIndex < orderedArtists.length - 1 ? orderedArtists[currentIndex + 1] : undefined;
+
+const hasLinks = Boolean(
+  (artist.instagramUrl && artist.instagramUrl.trim()) ||
+  (artist.websiteUrl && artist.websiteUrl.trim()),
+);
+
+const hasDetails = Boolean(
+  (artist.dimensionsOrDuration && artist.dimensionsOrDuration[locale].trim()) ||
+  (artist.technique && artist.technique[locale].trim()) ||
+  (artist.price && artist.price[locale].trim()) ||
+  (artist.email && artist.email.trim()) ||
+  (artist.phone && artist.phone.trim()),
+);
+
+const ui = {
+  ca: {
+    artist: "Artista",
+    exhibition: "Exposició",
+    statement: "Descripció",
+    links: "Enllaços",
+    details: "Detalls",
+    visit: "Visita",
+    aboutExhibition: "Sobre l'exposició",
+    allArtists: "Tots els artistes",
+    previous: "Artista anterior",
+    next: "Artista següent",
+    instagram: "Instagram",
+    website: "Website",
+    email: "Email",
+    phone: "Telèfon",
+    dimensions: "Mida / durada",
+    technique: "Tècnica",
+    price: "PVP",
+    venue: "Espai",
+    address: "Adreça",
+    dates: "Dates",
+    maps: "Obrir a Maps",
+    readStatement: "Llegir descripció",
+  },
+  es: {
+    artist: "Artista",
+    exhibition: "Exposición",
+    statement: "Descripción",
+    links: "Enlaces",
+    details: "Detalles",
+    visit: "Visita",
+    aboutExhibition: "Sobre la exposición",
+    allArtists: "Todos los artistas",
+    previous: "Artista anterior",
+    next: "Artista siguiente",
+    instagram: "Instagram",
+    website: "Website",
+    email: "Email",
+    phone: "Teléfono",
+    dimensions: "Medida / duración",
+    technique: "Técnica",
+    price: "PVP",
+    venue: "Espacio",
+    address: "Dirección",
+    dates: "Fechas",
+    maps: "Abrir en Maps",
+    readStatement: "Leer descripción",
+  },
+  en: {
+    artist: "Artist",
+    exhibition: "Exhibition",
+    statement: "Statement",
+    links: "Links",
+    details: "Details",
+    visit: "Visit",
+    aboutExhibition: "About exhibition",
+    allArtists: "All artists",
+    previous: "Previous artist",
+    next: "Next artist",
+    instagram: "Instagram",
+    website: "Website",
+    email: "Email",
+    phone: "Phone",
+    dimensions: "Dimensions / duration",
+    technique: "Technique",
+    price: "Price",
+    venue: "Venue",
+    address: "Address",
+    dates: "Dates",
+    maps: "Open in Maps",
+    readStatement: "Read statement",
+  },
+} as const;
+
+const t = ui[locale];
+---
+
+<BaseLayout
+  title={`${artist.name} — ${artist.expositionTitle[locale]}`}
+  locale={locale}
+  pathNoLocale={`/artists/${artist.slug}`}
+>
+  <section class="container-premium pt-8 md:pt-12">
+    <div class="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
+      <div class="space-y-5">
+        <span class="fluid-pill">
+          {t.artist} {String(artist.order).padStart(2, "0")}
+        </span>
+
+        <div class="space-y-3">
+          <h1 class="max-w-[14ch] text-5xl font-semibold leading-[0.94] tracking-[-0.05em] text-white md:text-7xl">
+            {artist.name}
+          </h1>
+
+          <p class="max-w-3xl text-2xl leading-9 text-white/78 md:text-3xl md:leading-10">
+            {artist.expositionTitle[locale]}
+          </p>
+
+          {artist.subtitle && (
+            <p class="max-w-2xl text-base leading-8 text-white/56 md:text-lg">
+              {artist.subtitle[locale]}
+            </p>
+          )}
+        </div>
+      </div>
+
+      <aside class="fluid-panel rounded-[2rem] p-6 md:p-7">
+        <p class="section-kicker">{t.exhibition}</p>
+        <h2 class="mt-4 text-2xl font-semibold tracking-[-0.03em] text-white md:text-3xl">
+          {exhibition.title[locale]}
+        </h2>
+
+        <p class="mt-4 text-sm leading-7 text-white/68 md:text-base">
+          {exhibition.venue} · {exhibition.dates}
+        </p>
+
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a
+            href={`/${locale}/exhibition`}
+            class="fluid-pill"
+          >
+            {t.aboutExhibition}
+          </a>
+
+          <a
+            href={`/${locale}/exhibition#artists`}
+            class="fluid-pill"
+          >
+            {t.allArtists}
+          </a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="container-premium pt-8 md:pt-10">
+    <ArtistMiniHeroStage
+      client:load
+      label={`${t.artist} ${String(artist.order).padStart(2, "0")}`}
+      title={artist.name}
+      subtitle={artist.expositionTitle[locale]}
+      metaLine={artist.subtitle ? artist.subtitle[locale] : exhibition.venue}
+      ctaLabel={t.readStatement}
+      seed={artist.order}
+    />
+  </section>
+
+  <section id="artist-statement" class="container-premium pt-10 md:pt-14">
+    <div class="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+      <div class="fluid-panel rounded-[2rem] p-6 md:p-8">
+        <p class="section-kicker">{t.statement}</p>
+        <div class="fluid-divider mt-5 mb-6"></div>
+
+        <div class="space-y-5">
+          {artist.shortIntro && (
+            <p class="text-lg leading-8 text-white/78">
+              {artist.shortIntro[locale]}
+            </p>
+          )}
+
+          <p class="text-base leading-8 text-white/68 md:text-lg md:leading-9">
+            {artist.description[locale]}
+          </p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        {hasLinks && (
+          <aside class="fluid-panel rounded-[2rem] p-6 md:p-8">
+            <p class="section-kicker">{t.links}</p>
+            <div class="fluid-divider mt-5 mb-6"></div>
+
+            <div class="space-y-3">
+              {artist.instagramUrl && artist.instagramUrl.trim() && (
+                <a
+                  href={artist.instagramUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  class="block rounded-[1.25rem] border border-white/10 bg-white/[0.03] px-4 py-4 text-sm text-white/78 transition hover:bg-white/[0.06] hover:text-white"
+                >
+                  {t.instagram}
+                </a>
+              )}
+
+              {artist.websiteUrl && artist.websiteUrl.trim() && (
+                <a
+                  href={artist.websiteUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  class="block rounded-[1.25rem] border border-white/10 bg-white/[0.03] px-4 py-4 text-sm text-white/78 transition hover:bg-white/[0.06] hover:text-white"
+                >
+                  {t.website}
+                </a>
+              )}
+            </div>
+          </aside>
+        )}
+
+        {hasDetails && (
+          <aside class="fluid-panel rounded-[2rem] p-6 md:p-8">
+            <p class="section-kicker">{t.details}</p>
+            <div class="fluid-divider mt-5 mb-6"></div>
+
+            <div class="space-y-4 text-sm text-white/72 md:text-base">
+              {artist.dimensionsOrDuration && artist.dimensionsOrDuration[locale].trim() && (
+                <div class="flex items-start justify-between gap-4">
+                  <span>{t.dimensions}</span>
+                  <span class="text-right text-white/92">{artist.dimensionsOrDuration[locale]}</span>
+                </div>
+              )}
+
+              {artist.technique && artist.technique[locale].trim() && (
+                <div class="flex items-start justify-between gap-4">
+                  <span>{t.technique}</span>
+                  <span class="text-right text-white/88">{artist.technique[locale]}</span>
+                </div>
+              )}
+
+              {artist.price && artist.price[locale].trim() && (
+                <div class="flex items-start justify-between gap-4">
+                  <span>{t.price}</span>
+                  <span class="text-right text-white/88">{artist.price[locale]}</span>
+                </div>
+              )}
+
+              {artist.email && artist.email.trim() && (
+                <div class="flex items-start justify-between gap-4">
+                  <span>{t.email}</span>
+                  <span class="text-right text-white/88">{artist.email}</span>
+                </div>
+              )}
+
+              {artist.phone && artist.phone.trim() && (
+                <div class="flex items-start justify-between gap-4">
+                  <span>{t.phone}</span>
+                  <span class="text-right text-white/88">{artist.phone}</span>
+                </div>
+              )}
+            </div>
+          </aside>
+        )}
+
+        <aside class="fluid-panel rounded-[2rem] p-6 md:p-8">
+          <p class="section-kicker">{t.visit}</p>
+          <div class="fluid-divider mt-5 mb-6"></div>
+
+          <div class="space-y-4 text-sm text-white/72 md:text-base">
+            <div class="flex items-start justify-between gap-4">
+              <span>{t.venue}</span>
+              <span class="text-right text-white/92">{exhibition.venue}</span>
+            </div>
+
+            {exhibition.address && (
+              <div class="flex items-start justify-between gap-4">
+                <span>{t.address}</span>
+                <span class="text-right text-white/88">{exhibition.address}</span>
+              </div>
+            )}
+
+            <div class="flex items-start justify-between gap-4">
+              <span>{t.dates}</span>
+              <span class="text-right text-white/88">{exhibition.dates}</span>
+            </div>
+          </div>
+
+          {exhibition.mapsUrl && (
+            <div class="mt-6">
+              <a
+                href={exhibition.mapsUrl}
+                target="_blank"
+                rel="noreferrer"
+                class="inline-flex items-center gap-2 rounded-full border border-[#a8cbff26] bg-[linear-gradient(180deg,rgba(10,18,30,0.88),rgba(5,10,18,0.82))] px-4 py-3 text-[12px] uppercase tracking-[0.28em] text-white shadow-[0_18px_60px_rgba(0,0,0,0.24),inset_0_0_0_1px_rgba(148,187,255,0.08)] transition hover:scale-[1.02]"
+              >
+                <span>{t.maps}</span>
+                <span class="text-white/42">↗</span>
+              </a>
+            </div>
+          )}
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="container-premium pt-10 md:pt-14 pb-16 md:pb-24">
+    <div class="grid gap-4 md:grid-cols-2">
+      <div>
+        {previousArtist && (
+          <a
+            href={`/${locale}/artists/${previousArtist.slug}`}
+            class="fluid-panel block rounded-[1.75rem] p-5 transition hover:bg-white/[0.04]"
+          >
+            <p class="section-kicker">{t.previous}</p>
+            <p class="mt-4 text-2xl font-semibold tracking-[-0.03em] text-white">
+              {previousArtist.name}
+            </p>
+          </a>
+        )}
+      </div>
+
+      <div>
+        {nextArtist && (
+          <a
+            href={`/${locale}/artists/${nextArtist.slug}`}
+            class="fluid-panel block rounded-[1.75rem] p-5 text-right transition hover:bg-white/[0.04]"
+          >
+            <p class="section-kicker">{t.next}</p>
+            <p class="mt-4 text-2xl font-semibold tracking-[-0.03em] text-white">
+              {nextArtist.name}
+            </p>
+          </a>
+        )}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

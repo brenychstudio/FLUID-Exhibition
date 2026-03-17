@@ -1,0 +1,31 @@
+﻿---
+import { LOCALES, LOCALE_LABELS, localizePath, type Locale } from "../../lib/i18n";
+
+interface Props {
+  locale: Locale;
+  pathNoLocale: string;
+}
+
+const { locale, pathNoLocale } = Astro.props;
+---
+
+<nav class="flex items-center gap-1 rounded-full border border-white/10 bg-white/5 p-1 backdrop-blur-xl">
+  {LOCALES.map((item) => {
+    const isActive = item === locale;
+
+    return (
+      <a
+        href={localizePath(item, pathNoLocale)}
+        aria-current={isActive ? "page" : undefined}
+        class="rounded-full px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] transition duration-200"
+        style={
+          isActive
+            ? "background:#ffffff;color:#02050b;box-shadow:0 0 0 1px rgba(255,255,255,0.06), 0 8px 24px rgba(0,0,0,0.16);"
+            : "color:rgba(255,255,255,0.74);"
+        }
+      >
+        {LOCALE_LABELS[item]}
+      </a>
+    );
+  })}
+</nav>

@@ -1,0 +1,36 @@
+﻿---
+import QRExhibitionPreviewStage from "./QRExhibitionPreviewStage.tsx";
+
+const {
+  title = "FLUID",
+  subtitle = "Collaborative exhibition",
+  dateLabel = "26 MARCH — 17 APRIL 2026",
+  venueLabel = "BARCELONA / SANTLLUC CERCLE ARTÍSTIC",
+  curatorLabel = "COLLABORATIVE EXHIBITION",
+  localeLinks = [],
+  infoItems = [],
+  heroTitle = "FLUID",
+  heroSubtitle = "Liquid morphing substance / nocturnal reflection / living memory",
+  heroMetaLabel = "Liquid Hero Window",
+  heroCtaLabel = "Enter Exhibition",
+  mapsHref = "",
+  mapsLabel = "Open in Maps",
+} = Astro.props;
+---
+
+<QRExhibitionPreviewStage
+  client:load
+  title={title}
+  subtitle={subtitle}
+  dateLabel={dateLabel}
+  venueLabel={venueLabel}
+  curatorLabel={curatorLabel}
+  localeLinks={localeLinks}
+  infoItems={infoItems}
+  heroTitle={heroTitle}
+  heroSubtitle={heroSubtitle}
+  heroMetaLabel={heroMetaLabel}
+  heroCtaLabel={heroCtaLabel}
+  mapsHref={mapsHref}
+  mapsLabel={mapsLabel}
+/>

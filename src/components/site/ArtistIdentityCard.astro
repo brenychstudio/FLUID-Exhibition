@@ -1,0 +1,84 @@
+﻿---
+import type { ArtistData } from "../../lib/content";
+import type { Locale } from "../../lib/i18n";
+
+interface Props {
+  artist: ArtistData;
+  locale: Locale;
+  href: string;
+  openLabel: string;
+  featuredLabel: string;
+  participantLabel: string;
+  duoLabel: string;
+}
+
+const {
+  artist,
+  locale,
+  href,
+  openLabel,
+  featuredLabel,
+  participantLabel,
+  duoLabel,
+} = Astro.props;
+
+const isFeatured = artist.order === 1;
+const isDuo = artist.name.includes("&");
+
+const status = isFeatured ? featuredLabel : isDuo ? duoLabel : participantLabel;
+
+const orbX = `${16 + ((artist.order * 11) % 34)}%`;
+const orbY = `${10 + ((artist.order * 9) % 24)}%`;
+const orb2X = `${54 + ((artist.order * 7) % 18)}%`;
+const orb2Y = `${44 + ((artist.order * 5) % 18)}%`;
+const sheenRotate = `${-10 + ((artist.order * 3) % 14)}deg`;
+const animDelay = `${(artist.order - 1) * 0.33}s`;
+---
+
+<a
+  href={href}
+  class="identity-card identity-card-animated group"
+  style={`--orb-x:${orbX}; --orb-y:${orbY}; --orb2-x:${orb2X}; --orb2-y:${orb2Y}; --sheen-rotate:${sheenRotate}; --anim-delay:${animDelay};`}
+>
+  <div class="identity-card-grid"></div>
+  <div class="identity-card-orb"></div>
+  <div class="identity-card-orb-secondary"></div>
+  <div class="identity-card-sheen"></div>
+  <div class="identity-card-wave"></div>
+  <div class="identity-card-line"></div>
+
+  <div class="identity-card-surface">
+    <div class="flex items-start justify-between gap-4">
+      <span class="fluid-pill">Artist {String(artist.order).padStart(2, "0")}</span>
+      <span class="text-[11px] uppercase tracking-[0.26em] text-white/44">{status}</span>
+    </div>
+
+    <div class="space-y-4">
+      <div class="space-y-2">
+        <h3 class="max-w-[16ch] text-3xl font-semibold tracking-[-0.04em] text-white md:text-[2.15rem]">
+          {artist.name}
+        </h3>
+
+        <p class="text-lg leading-8 text-white/76">
+          {artist.expositionTitle[locale]}
+        </p>
+      </div>
+
+      {artist.shortIntro && (
+        <p class="max-w-[36rem] text-sm leading-7 text-white/58 md:text-[0.96rem]">
+          {artist.shortIntro[locale]}
+        </p>
+      )}
+    </div>
+
+    <div class="flex items-center justify-between gap-4 pt-4">
+      <span class="text-[11px] uppercase tracking-[0.28em] text-white/36">
+        {artist.subtitle ? artist.subtitle[locale] : ""}
+      </span>
+
+      <span class="text-[11px] uppercase tracking-[0.28em] text-white/68 transition group-hover:text-white">
+        {openLabel}
+      </span>
+    </div>
+  </div>
+</a>
