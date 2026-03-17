@@ -337,10 +337,10 @@ export default function ArtistMiniHeroStage({
 
       <div className="relative z-10 flex min-h-[430px] flex-col justify-between p-6 md:p-8">
         <div
-          className={`max-w-[16rem] transition-all duration-1000 ${revealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+          className={`mb-4 max-w-[16rem] transition-all duration-1000 md:mb-0 ${revealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
           style={{ animation: revealed ? "artist-mini-hero-fade 0.95s cubic-bezier(0.22,1,0.36,1) both" : "none" }}
         >
-          <div className="inline-flex rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[10px] uppercase tracking-[0.34em] text-white/70 backdrop-blur-lg">
+          <div className="relative z-[2] inline-flex rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[10px] uppercase tracking-[0.34em] text-white/70 backdrop-blur-lg">
             {label}
           </div>
         </div>

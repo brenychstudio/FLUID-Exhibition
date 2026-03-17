@@ -22,6 +22,7 @@ export const exhibition: ExhibitionData = {
   dates: "26 Mar — 17 Apr 2026",
   hours: "Opening: 18:00 artists talk · 19:00 exhibition opening",
   organizer: "Santlluc Cercle Artístic",
+  curator: "Eduardo Pérez-Cabrero",
   heroImage: "/exhibition/poster/fluid-poster.jpg",
   artists: [
     "eduardo-perez-cabrero",

@@ -48,8 +48,8 @@ const animDelay = `${(artist.order - 1) * 0.33}s`;
   <div class="identity-card-line"></div>
 
   <div class="identity-card-surface">
-    <div class="flex items-start justify-between gap-4">
-      <span class="fluid-pill">Artist {String(artist.order).padStart(2, "0")}</span>
+    <div class="mb-3 flex items-start justify-between gap-4 md:mb-0">
+      <span class="fluid-pill relative z-[2] shrink-0">Artist {String(artist.order).padStart(2, "0")}</span>
       <span class="text-[11px] uppercase tracking-[0.26em] text-white/44">{status}</span>
     </div>
 
