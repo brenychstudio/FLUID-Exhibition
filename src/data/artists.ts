@@ -161,7 +161,7 @@ export const artists: ArtistData[] = [
 },
   genericArtist("jungle-mows", "Jungle Mows", 3),
   genericArtist("julio-bono", "Julio Bono", 4),
-  {
+{
   slug: "concept2048",
   name: "Concept2048",
   expositionTitle: {
@@ -175,14 +175,14 @@ export const artists: ArtistData[] = [
     en: "Ekaterina Perekopskaya & Rostyslav Brenych",
   },
   shortIntro: {
-    ca: "Obra multimèdia immersiva sobre la relació fràgil entre la humanitat i la natura",
-    es: "Obra multimedia inmersiva sobre la relación frágil entre la humanidad y la naturaleza",
+    ca: "Instal·lació multimèdia immersiva sobre la relació fràgil entre la humanitat i la natura",
+    es: "Instalación multimedia inmersiva sobre la frágil relación entre la humanidad y la naturaleza",
     en: "Immersive multimedia work about humanity’s fragile relationship with nature",
   },
   description: {
-    ca: "Whisper of the Sea és una obra multimèdia immersiva de Concept2048 que explora la relació fràgil de la humanitat amb la natura. Les mítiques AquaSouls — testimonis silenciosos de la memòria antiga de l’oceà i portadores de coneixement oblidat — arriben a la riba a la recerca d’empatia i, a través d’una dansa silenciosa, assenyalen aquesta ruptura, evocant una advertència subtil: el passat mai no desapareix del tot, i les aigües poden tornar a alçar-se, tal com ja va passar abans.\n\nWhisper of the Sea convida l’espectador a aturar-se i escoltar — no només el mar, sinó també la consciència que connecta tots els éssers vius. En aquest moment delicat, una consciència més profunda apareix només per a aquells que estan disposats a sentir.",
-    es: "Whisper of the Sea es una obra multimedia inmersiva de Concept2048 que explora la frágil relación de la humanidad con la naturaleza. Las míticas AquaSouls — testigos silenciosos de la memoria ancestral del océano y portadoras de conocimiento olvidado — llegan a la orilla en busca de empatía y, a través de una danza silenciosa, señalan esta ruptura, evocando una advertencia sutil: el pasado nunca desaparece del todo, y las aguas pueden volver a levantarse, como ya ocurrió antes.\n\nWhisper of the Sea invita al espectador a detenerse y escuchar — no solo al mar, sino también a la conciencia que conecta a todos los seres vivos. En este delicado momento, una conciencia más profunda aparece solo para quienes están dispuestos a oír.",
-    en: "Whisper of the Sea is an immersive multimedia work by Concept2048 exploring humanity's fragile relationship with nature. The mythical AquaSouls — silent witnesses of the ocean’s ancient memory and carriers of forgotten knowledge — come ashore in search of empathy and, through a quiet dance, draw attention to this rupture, echoing a subtle warning: the past is never truly gone, and the waters may rise again, as they once did before.\n\nWhisper of the Sea invites viewers to pause and listen — not only to the sea, but to the consciousness that connects all living beings. In this delicate moment, a deeper awareness appears only to those willing to hear.",
+    ca: "Whisper of the Sea és una obra multimèdia immersiva de Concept2048 que explora la fràgil relació de la humanitat amb la natura. Els mítics AquaSouls —testimonis silenciosos de la memòria ancestral de l’oceà i guardians d’una saviesa oblidada— emergeixen a la riba a la recerca d’empatia i, a través d’una dansa serena, assenyalen aquesta ruptura, evocant una advertència velada: el passat mai no desapareix del tot, i les aigües poden alçar-se una vegada més, com ja va passar en el passat.\n\nWhisper of the Sea convida a aturar-se i escoltar, no només el mar, sinó també la consciència que uneix tots els éssers vius. En aquest moment delicat, apareix una consciència més profunda només a aquells que desitgen sentir.",
+    es: "Whisper of the Sea es una obra multimedia inmersiva de Concept2048 que explora la frágil relación de la humanidad con la naturaleza. Los míticos AquaSouls —testigos silenciosos de la memoria ancestral del océano y guardianes de una sabiduría olvidada— surgen en la orilla en busca de empatía y, a través de una danza serena, señalan esta ruptura, evocando una advertencia velada: el pasado nunca desaparece del todo, y las aguas pueden alzarse una vez más, como ya ocurrió en el pasado.\n\nWhisper of the Sea invita a detenerse y escuchar, no solo al mar, sino también a la conciencia que une a todos los seres vivos. En este delicado momento, aparece una conciencia más profunda solo a quienes desean oír.",
+    en: "Whisper of the Sea is an immersive multimedia work by Concept2048 exploring humanity’s fragile relationship with nature. The mythical AquaSouls — silent witnesses of the ocean’s ancient memory and carriers of forgotten knowledge — come ashore in search of empathy and, through a quiet dance, draw attention to this rupture, echoing a subtle warning: the past is never truly gone, and the waters may rise again, as they once did before.\n\nWhisper of the Sea invites viewers to pause and listen — not only to the sea, but to the consciousness that connects all living beings. In this delicate moment, a deeper awareness appears — only to those who wish to hear.",
   },
   heroImage: posterFallback,
   instagramUrl: "https://www.instagram.com/concept_2048/",
@@ -190,19 +190,19 @@ export const artists: ArtistData[] = [
   email: "artproject@concept2048.com",
   phone: "",
   dimensionsOrDuration: {
-    ca: "5 min 28 sec",
-    es: "5 min 28 sec",
-    en: "5 min 28 sec",
+    ca: "5 min 28 sec / 42 × 28 cm",
+    es: "5 min 28 sec / 42 × 28 cm",
+    en: "5 min 28 sec / 42 × 28 cm",
   },
   technique: {
-    ca: "Instal·lació de vídeo i so",
-    es: "Instalación de video y sonido",
-    en: "Video and sound installation",
+    ca: "Instal·lació multimèdia (vídeo, so, fotografia fine art)",
+    es: "Instalación multimedia (vídeo, sonido, fotografía fine art)",
+    en: "Multimedia installation (video, sound, fine art photography)",
   },
   price: {
-    ca: "No està a la venda",
-    es: "No está a la venta",
-    en: "Not for sale",
+    ca: "370 € + 10% IVA (per obra)",
+    es: "370 € + 10% VAT (por obra)",
+    en: "370 € + 10% IVA (each work)",
   },
   order: 5,
 },
