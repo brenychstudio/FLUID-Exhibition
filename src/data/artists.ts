@@ -294,7 +294,51 @@ export const artists: ArtistData[] = [
   },
   order: 5,
 },
-  genericArtist("yerine-richardson", "Yerine Richardson", 6),
+  {
+    slug: "yerine-richardson",
+    name: "Yerine Richardson",
+    expositionTitle: {
+      ca: "Angels Nest",
+      es: "Angels Nest",
+      en: "Angels Nest",
+    },
+    subtitle: {
+      ca: "80 × 40 × 200 cm · Suspensió d’estructura tèxtil i corpòria",
+      es: "80 × 40 × 200 cm · Suspensión estructura textil y corpórea",
+      en: "80 × 40 × 200 cm · Suspension of textile and corporeal structure",
+    },
+    shortIntro: {
+      ca: "Instal·lació suspesa sobre presència invisible, protecció i naixement",
+      es: "Instalación suspendida sobre presencia invisible, protección y nacimiento",
+      en: "Suspended installation about invisible presence, protection, and birth",
+    },
+    description: {
+      ca: "La reciprocitat artística ens ha conduït al concepte d’un niu d’àngels. Aquests éssers que ens acompanyen en la seva invisibilitat i ens ajuden a superar les aventures vitals. La instal·lació contempla la suspensió de “nius” entre tèxtils blancs que simulen els núvols i els embolcallen fins que ja poden néixer.",
+      es: "La reciprocidad artística nos ha llevado al concepto de un nido de ángeles. Esos seres que nos acompañan en su invisibilidad y nos ayudan a superar las aventuras vitales. La instalación contempla la suspensión de “nidos” entre textiles blancos que simulan las nubes y los arropan hasta que ya pueden nacer.",
+      en: "Artistic reciprocity has led us to the concept of a nest of angels. These beings accompany us in their invisibility and help us overcome life’s adventures. The installation proposes the suspension of “nests” among white textiles that simulate clouds and shelter them until they are ready to be born.",
+    },
+    heroImage: posterFallback,
+    instagramUrl: "https://instagram.com/popcaribe",
+    websiteUrl: "https://www.popcaribe.com",
+    email: "",
+    phone: "+34 609 902 757",
+    dimensionsOrDuration: {
+      ca: "80 × 40 × 200 cm",
+      es: "80 × 40 × 200 cm",
+      en: "80 × 40 × 200 cm",
+    },
+    technique: {
+      ca: "Suspensió d’estructura tèxtil i corpòria",
+      es: "Suspensión estructura textil y corpórea",
+      en: "Suspension of textile and corporeal structure",
+    },
+    price: {
+      ca: "6.750€ + 10% IVA",
+      es: "6.750€ + 10% IVA",
+      en: "€6,750 + 10% VAT",
+    },
+    order: 6,
+  },
   {
   slug: "ruben",
   name: "Rubén",
