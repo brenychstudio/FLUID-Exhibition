@@ -296,7 +296,7 @@ export const artists: ArtistData[] = [
 },
   {
     slug: "yerine-richardson",
-    name: "Yerine Richardson",
+    name: "Yermine Richardson",
     expositionTitle: {
       ca: "Angels Nest",
       es: "Angels Nest",
