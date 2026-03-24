@@ -432,7 +432,51 @@ export const artists: ArtistData[] = [
     },
     order: 9,
   },
-  genericArtist("eugenio-s-shapoval", "Eugenio S Shapoval", 10),
+  {
+    slug: "eugenio-s-shapoval",
+    name: "Eugenio S Shapoval",
+    expositionTitle: {
+      ca: "Echo",
+      es: "Echo",
+      en: "Echo",
+    },
+    subtitle: {
+      ca: "165 × 215 × 80 cm · Paper artesanal sobre paret intervingut amb ceràmica i or + escultura exempta en ciment blanc",
+      es: "165 × 215 × 80 cm · Papel artesanal sobre pared intervenido por cerámica & oro en combinación con escultura exenta en cemento blanco",
+      en: "165 × 215 × 80 cm · Handmade paper on wall with ceramic and gold, combined with a freestanding white cement sculpture",
+    },
+    shortIntro: {
+      ca: "Visió compartida de dos llenguatges materials en una instal·lació de doble direccionalitat",
+      es: "Visión compartida de dos lenguajes materiales en una instalación de doble direccionalidad",
+      en: "Shared vision of two material languages in a double-directional installation",
+    },
+    description: {
+      ca: "A “Echo” es desprèn la visió comuna de dos artistes amb tècniques diferents: d’una banda, una explosió de massa de paper artesanal treballat i enganxat aleatòriament a la paret, i de l’altra, una explosió de ceràmica i pa d’or. Igual que l’eco del so, l’obra presenta una doble direccionalitat: l’anada i la tornada cap a l’escultura blanca, que suggereix alhora la flora (llavor) i la fauna (llebre) de la natura.",
+      es: "En “Echo” se desprende la visión común de dos artistas con técnicas diferentes: por una parte explosión de masa de papel artesanal trabajado y enganchado aleatoriamente a la pared y explosión de cerámica y pan de oro. Al igual que el eco de sonido, la obra presenta doble direccionalidad: la ida y la vuelta hacia la escultura blanca, que desprende un guiño a la flora (semilla) y a la fauna (liebre) de la naturaleza.",
+      en: "In “Echo”, a shared vision emerges between two artists working with different techniques: on one side, an explosion of handmade paper pulp worked and randomly attached to the wall, and on the other, an explosion of ceramic and gold leaf. Like the echo of sound, the work presents a double directionality: the movement outward and back toward the white sculpture, which alludes both to flora (seed) and fauna (hare) within nature.",
+    },
+    heroImage: posterFallback,
+    instagramUrl: "https://instagram.com/zhk_artist",
+    websiteUrl: "",
+    email: "",
+    phone: "+34 722 182 184",
+    dimensionsOrDuration: {
+      ca: "165 × 215 × 80 cm",
+      es: "165 × 215 × 80 cm",
+      en: "165 × 215 × 80 cm",
+    },
+    technique: {
+      ca: "Paper artesanal sobre paret intervingut amb ceràmica i or, en combinació amb escultura exempta en ciment blanc",
+      es: "Papel artesanal sobre pared intervenido por cerámica & oro en combinación con escultura exenta en cemento blanco",
+      en: "Handmade paper on wall with ceramic and gold, combined with a freestanding white cement sculpture",
+    },
+    price: {
+      ca: "5.700€ + 10% IVA",
+      es: "5.700€ + 10% IVA",
+      en: "€5,700 + 10% VAT",
+    },
+    order: 10,
+  },
 ];
 
 export function getArtistBySlug(slug: string) {
