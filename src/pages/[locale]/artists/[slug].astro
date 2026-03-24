@@ -30,7 +30,8 @@ const nextArtist = currentIndex < orderedArtists.length - 1 ? orderedArtists[cur
 
 const hasLinks = Boolean(
   (artist.instagramUrl && artist.instagramUrl.trim()) ||
-  (artist.websiteUrl && artist.websiteUrl.trim()),
+  (artist.websiteUrl && artist.websiteUrl.trim()) ||
+  (artist.secondaryLinkUrl && artist.secondaryLinkUrl.trim()),
 );
 
 const hasDetails = Boolean(
@@ -234,6 +235,17 @@ const t = ui[locale];
                   class="block rounded-[1.25rem] border border-white/10 bg-white/[0.03] px-4 py-4 text-sm text-white/78 transition hover:bg-white/[0.06] hover:text-white"
                 >
                   {t.website}
+                </a>
+              )}
+
+              {artist.secondaryLinkUrl && artist.secondaryLinkUrl.trim() && (
+                <a
+                  href={artist.secondaryLinkUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  class="block rounded-[1.25rem] border border-white/10 bg-white/[0.03] px-4 py-4 text-sm text-white/78 transition hover:bg-white/[0.06] hover:text-white"
+                >
+                  {artist.secondaryLinkText ?? t.website}
                 </a>
               )}
             </div>

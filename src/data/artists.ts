@@ -385,7 +385,53 @@ export const artists: ArtistData[] = [
   order: 7,
 },
   genericArtist("ferran-collado", "Ferràn Collado", 8),
-  genericArtist("agustin-cervai-alejandro-rosas", "Agustín Cervai & Alejandro Rosas", 9, true),
+  {
+    slug: "agustin-cervai-alejandro-rosas",
+    name: "Agustín Cervai & Alejandro Rosas",
+    expositionTitle: {
+      ca: "EL GESTO",
+      es: "EL GESTO",
+      en: "EL GESTO",
+    },
+    subtitle: {
+      ca: "80 × 120 × 55 cm · Cianotípia sobre paper i escultura sobre poliestirè expandit",
+      es: "80 × 120 × 55 cm · Cianotipia sobre papel y escultura sobre poliexpan",
+      en: "80 × 120 × 55 cm · Cyanotype on paper and sculpture on polystyrene",
+    },
+    shortIntro: {
+      ca: "Instal·lació col·laborativa sobre trobada, proximitat i unió sensible",
+      es: "Instalación colaborativa sobre encuentro, cercanía y unión sensible",
+      en: "Collaborative installation about encounter, proximity, and sensitive connection",
+    },
+    description: {
+      ca: "En un context travessat per la incertesa, l’obra proposa un gest de trobada. Sorgida de la col·laboració entre dos artistes que entenen l’art com un pont sensible, la instal·lació articula cianotípia i escultura: en el pla, unes mans evoquen contacte, proximitat i contenció; al centre, una forma circular orgànica irromp i integra, com un cos híbrid. La peça convida a una contemplació hipnòtica, desplaçant la mirada entre superfície i volum. Així, es configura com un territori d’unió que deixa una pregunta oberta: què passa si comencem a apropar-nos més?",
+      es: "En un contexto atravesado por la incertidumbre, la obra propone un gesto de encuentro. Surge de la colaboración entre dos artistas que entienden el arte como un puente sensible. La instalación articula cianotipia y escultura: en el plano, unas manos evocan contacto, cercanía y contención; en el centro, una forma circular orgánica irrumpe e integra, como un cuerpo híbrido. La pieza invita a una contemplación hipnótica, desplazando la mirada entre superficie y volumen. Así, se configura como un territorio de unión que deja una pregunta abierta: ¿qué sucede si empezamos a acercarnos más?",
+      en: "In a context marked by uncertainty, the work proposes a gesture of encounter. It emerges from the collaboration between two artists who understand art as a sensitive bridge. The installation brings together cyanotype and sculpture: on the surface, hands evoke contact, closeness, and containment; at the center, an organic circular form breaks through and integrates like a hybrid body. The piece invites a hypnotic contemplation, shifting the gaze between surface and volume. In this way, it becomes a territory of union that leaves an open question: what happens if we begin to move closer to one another?",
+    },
+    heroImage: posterFallback,
+    instagramUrl: "https://www.instagram.com/monocromo_cyan_?igsh=MTZrOTluYjNnZWI4cQ%3D%3D&utm_source=qr",
+    websiteUrl: "",
+    secondaryLinkUrl: "https://www.instagram.com/bakanobandito?igsh=MTVtZWRoMnEwMXZrNA==",
+    secondaryLinkText: "Instagram · Alejandro Rosas",
+    email: "Cervaiagustin@gmail.com",
+    phone: "",
+    dimensionsOrDuration: {
+      ca: "80 × 120 × 55 cm",
+      es: "80 × 120 × 55 cm",
+      en: "80 × 120 × 55 cm",
+    },
+    technique: {
+      ca: "Cianotípia sobre paper i escultura sobre poliestirè expandit",
+      es: "Cianotipia sobre papel y escultura sobre poliexpan",
+      en: "Cyanotype on paper and sculpture on polystyrene",
+    },
+    price: {
+      ca: "4.200€ + 10% IVA",
+      es: "4.200€ + 10% IVA",
+      en: "€4,200 + 10% VAT",
+    },
+    order: 9,
+  },
   genericArtist("eugenio-s-shapoval", "Eugenio S Shapoval", 10),
 ];
 

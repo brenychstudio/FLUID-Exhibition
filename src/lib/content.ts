@@ -12,6 +12,8 @@ export type ArtistData = {
   heroImage: string;
   instagramUrl?: string;
   websiteUrl?: string;
+  secondaryLinkUrl?: string;
+  secondaryLinkText?: string;
   email?: string;
   phone?: string;
   dimensionsOrDuration?: LocalizedText;
