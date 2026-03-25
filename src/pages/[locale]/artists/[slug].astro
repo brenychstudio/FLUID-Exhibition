@@ -203,9 +203,16 @@ const t = ui[locale];
             </p>
           )}
 
-          <p class="text-base leading-8 text-white/68 md:text-lg md:leading-9">
-            {artist.description[locale]}
-          </p>
+          <div class="space-y-5">
+            {artist.description[locale]
+              .split("\n\n")
+              .filter(Boolean)
+              .map((paragraph) => (
+                <p class="text-base leading-8 text-white/68 md:text-lg md:leading-9">
+                  {paragraph}
+                </p>
+              ))}
+          </div>
         </div>
       </div>
 
