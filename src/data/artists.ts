@@ -384,7 +384,51 @@ export const artists: ArtistData[] = [
   },
   order: 7,
 },
-  genericArtist("ferran-collado", "Ferràn Collado", 8),
+  {
+    slug: "ferran-collado",
+    name: "Ferran Collado",
+    expositionTitle: {
+      ca: "Reflejos imperfectos",
+      es: "Reflejos imperfectos",
+      en: "Reflejos imperfectos",
+    },
+    subtitle: {
+      ca: "3 peces 25 × 80 cm · Vidre bufat i platejat",
+      es: "3 piezas 25 × 80 cm · Vidrio soplado y plateado",
+      en: "3 pieces 25 × 80 cm · Blown and silvered glass",
+    },
+    shortIntro: {
+      ca: "Instal·lació de vidre sobre moviment, lluentor i interacció entre els éssers vius",
+      es: "Instalación en vidrio sobre movimiento, brillo e interacción entre los seres vivos",
+      en: "Glass installation about movement, shimmer, and interaction between living beings",
+    },
+    description: {
+      ca: "Tres volums de cristall bufat i daurat/platejat interiorment. El joc de lluentors i reflexos ens recorda el moviment constant de la vida i la interacció entre els éssers vius.",
+      es: "Tres volúmenes de cristal soplado y dorado/plateado interiormente. El juego de brillos y reflejos nos recuerda el constante movimiento de la vida e interacción entre los seres vivos.",
+      en: "Three blown-glass volumes with an interior golden/silvered finish. The play of highlights and reflections recalls the constant movement of life and the interaction between living beings.",
+    },
+    heroImage: posterFallback,
+    instagramUrl: "https://instagram.com/ferrancollado",
+    websiteUrl: "",
+    email: "ferrancolladoglass@gmail.com",
+    phone: "",
+    dimensionsOrDuration: {
+      ca: "3 peces 25 × 80 cm",
+      es: "3 piezas 25 × 80 cm",
+      en: "3 pieces 25 × 80 cm",
+    },
+    technique: {
+      ca: "Vidre bufat i platejat",
+      es: "Vidrio soplado y plateado",
+      en: "Blown and silvered glass",
+    },
+    price: {
+      ca: "3.800€ + 10% IVA",
+      es: "3.800€ + 10% IVA",
+      en: "€3,800 + 10% VAT",
+    },
+    order: 8,
+  },
   {
     slug: "agustin-cervai-alejandro-rosas",
     name: "Agustín Cervai & Alejandro Rosas",
